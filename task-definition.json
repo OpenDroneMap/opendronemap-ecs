@@ -1,5 +1,5 @@
 {
-    "family": "",
+    "family": "odm",
     "taskRoleArn": "",
     "networkMode": "",
     "containerDefinitions": [
@@ -34,9 +34,19 @@
             ],
             "mountPoints": [
                 {
-                    "sourceVolume": "",
-                    "containerPath": "",
-                    "readOnly": true
+                    "sourceVolume": "/mnt/efs-mount-point/odm_data/images",
+                    "containerPath": "/code/images",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "/mnt/efs-mount-point/odm_data/odm_orthophoto",
+                    "containerPath": "/code/odm_orthophoto",
+                    "readOnly": false
+                },
+                {
+                    "sourceVolume": "/mnt/efs-mount-point/odm_data/odm_texturing",
+                    "containerPath": "/code/odm_texturing",
+                    "readOnly": false
                 }
             ],
             "volumesFrom": [
