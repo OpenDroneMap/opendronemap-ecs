@@ -1,7 +1,9 @@
 #cloud-config
+# Install nfs-utils
 package_upgrade: true
 packages:
 - nfs-utils
+# Set up EFS mount point and add to ECS cluster
 runcmd:
 - mkdir -p /mnt/efs-mount-point/
 - chown ec2-user:ec2-user /mnt/efs-mount-point/

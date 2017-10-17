@@ -1,0 +1,111 @@
+{
+    "family": "",
+    "taskRoleArn": "",
+    "networkMode": "",
+    "containerDefinitions": [
+        {
+            "name": "",
+            "image": "opendronemap/opendronemap",
+            "cpu": 8,
+            "memory": 16384,
+            "memoryReservation": 0,
+            "links": [
+                ""
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 0,
+                    "hostPort": 0,
+                    "protocol": ""
+                }
+            ],
+            "essential": true,
+            "entryPoint": [
+                ""
+            ],
+            "command": [
+                ""
+            ],
+            "environment": [
+                {
+                    "name": "",
+                    "value": ""
+                }
+            ],
+            "mountPoints": [
+                {
+                    "sourceVolume": "",
+                    "containerPath": "",
+                    "readOnly": true
+                }
+            ],
+            "volumesFrom": [
+                {
+                    "sourceContainer": "",
+                    "readOnly": true
+                }
+            ],
+            "linuxParameters": {
+                "capabilities": {
+                    "add": [
+                        ""
+                    ],
+                    "drop": [
+                        ""
+                    ]
+                }
+            },
+            "hostname": "",
+            "user": "",
+            "workingDirectory": "",
+            "disableNetworking": true,
+            "privileged": true,
+            "readonlyRootFilesystem": true,
+            "dnsServers": [
+                ""
+            ],
+            "dnsSearchDomains": [
+                ""
+            ],
+            "extraHosts": [
+                {
+                    "hostname": "",
+                    "ipAddress": ""
+                }
+            ],
+            "dockerSecurityOptions": [
+                ""
+            ],
+            "dockerLabels": {
+                "KeyName": ""
+            },
+            "ulimits": [
+                {
+                    "name": "",
+                    "softLimit": 0,
+                    "hardLimit": 0
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "",
+                "options": {
+                    "KeyName": ""
+                }
+            }
+        }
+    ],
+    "placementConstraints": [
+        {
+            "expression": "",
+            "type": "memberOf"
+        }
+    ],
+    "volumes": [
+        {
+            "name": "",
+            "host": {
+                "sourcePath": ""
+            }
+        }
+    ]
+}
