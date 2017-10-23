@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: brunsviga # NOTE: update this with your service name
+service: opendronemap-ecs # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -24,6 +24,16 @@ provider:
 # you can overwrite defaults here
   stage: prod
   region: ap-southeast-2
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - ecs:*
+      Resource: "*"
 
 functions:
   run:
