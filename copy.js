@@ -1,16 +1,32 @@
 console.log('Loading function');
 
 const AWS = require('aws-sdk');
-var params = require('odm-task-definition.json');
+
+var params = {
+  taskDefinition: 'copy:1', /* required */
+  cluster: 'odm',
+  count: 1,
+  group: 'copy',
+  placementStrategy: [
+    {
+      field: 'instanceId',
+      type: 'spread'
+    }
+  ]
+};
 
 exports.handler = function(event, context, callback) {
     console.log("\n\nLoading handler\n\n");
     var requestBody = JSON.parse(event.body);
     const ecs = new AWS.ECS();
-    ecs.registerTaskDefinition(params, function(err, data) {
+    requestBody.
+    params.overrides = {
+        command: "aws s3 cp --recursive " + requestBody.S3Uri + "/project/" + requestBody.S3Uri.slice(5).replace('/','_');
+    }
+    ecs.runTask(params, function(err, data) {
         if (err) {
             console.log(err.stack);
-            const response = {
+            const reponse = {
               statusCode: 503,
               headers: {
               "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
@@ -27,7 +43,7 @@ exports.handler = function(event, context, callback) {
               "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
               "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
             },
-            body: JSON.stringify({ "message": "Task registered." })
+            body: JSON.stringify({ "message": "Task running." })
           };
           callback(null, response);
         }

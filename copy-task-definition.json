@@ -1,0 +1,37 @@
+{
+  "family": "s3-copy",
+  "networkMode": "bridge",
+  "containerDefinitions": [
+    {
+      "name": "s3-copy",
+      "image": "matthewberryman/aws-cli",
+      "cpu": 1,
+      "mountPoints": [
+        {
+          "sourceVolume": "project",
+          "containerPath": "/project",
+          "readOnly": false
+        },
+      ],
+      "privileged": true,
+      "readonlyRootFilesystem": false,
+      "command": [
+        "aws s3 cp --recursive s3://my_s3/ /project"
+      ],
+      "environment": [
+        {
+          "name": "",
+          "value": ""
+        }
+      ],
+    }
+  ],
+  "volumes": [
+    {
+      "name": "project",
+      "host": {
+        "sourcePath": "/mnt/efs-mount-point/odm_data/project"
+      }
+    }
+  ]
+}

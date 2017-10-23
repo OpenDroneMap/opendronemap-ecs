@@ -43,6 +43,13 @@ functions:
           path: run
           method: post
           cors: true
+    copy:
+      handler: copy.handler
+      events:
+        - http:
+            path: copy
+            method: post
+            cors: true
 
   register:
     handler: register.handler
