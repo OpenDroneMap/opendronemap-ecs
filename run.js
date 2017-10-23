@@ -8,28 +8,13 @@ var params = {
   cluster: 'odm',
   count: 0,
   group: 'odm',
-  overrides: {
-    containerOverrides: [
-      {
-      }
-    ],
-  },
-  placementConstraints: [
-    {
-      expression: 'fixme',
-      type: 'fixme'
-    }
-  ],
   placementStrategy: [
     {
       field: 'instanceId',
       type: 'spread'
     }
-  ],
-  startedBy: 'fixme'
+  ]
 };
-
-ecs.runTask(params, function(err, data) {
 
 exports.handler = function(event, context, callback) {
     console.log("\n\nLoading handler\n\n");
@@ -37,7 +22,7 @@ exports.handler = function(event, context, callback) {
     const ecs = new AWS.ECS();
     params.overrides.containerOverrides =
     requestBody.overrides;
-    ecs.createCluster(params, function(err, data) {
+    ecs.runTask(params, function(err, data) {
         if (err) {
             console.log(err.stack);
             const reponse = {
