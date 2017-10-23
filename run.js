@@ -4,9 +4,9 @@ const AWS = require('aws-sdk');
 
 
 var params = {
-  taskDefinition: 'odm:1', /* required */
+  taskDefinition: 'odm:2', /* required */
   cluster: 'odm',
-  count: 0,
+  count: 1,
   group: 'odm',
   placementStrategy: [
     {
@@ -20,7 +20,7 @@ exports.handler = function(event, context, callback) {
     console.log("\n\nLoading handler\n\n");
     var requestBody = JSON.parse(event.body);
     const ecs = new AWS.ECS();
-    params.overrides.containerOverrides =
+    params.overrides =
     requestBody.overrides;
     ecs.runTask(params, function(err, data) {
         if (err) {

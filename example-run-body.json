@@ -1,0 +1,25 @@
+{
+  "containerOverrides":
+  {
+    "volumes": [
+      {
+        "name": "images",
+        "host": {
+          "sourcePath": "/mnt/efs-mount-point/odm_data/images"
+        }
+      },
+      {
+        "name": "odm_texturing",
+        "host": {
+          "sourcePath": "/mnt/efs-mount-point/odm_data/odm_texturing"
+        }
+      },
+      {
+        "name": "odm_orthophoto",
+        "host": {
+          "sourcePath": "/mnt/efs-mount-point/odm_data/odm_orthophoto"
+        }
+      }
+    ]
+  }
+}
