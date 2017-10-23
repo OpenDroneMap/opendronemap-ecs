@@ -10,7 +10,7 @@ exports.handler = function(event, context, callback) {
     ecs.registerTaskDefinition(params, function(err, data) {
         if (err) {
             console.log(err.stack);
-            const reponse = {
+            const response = {
               statusCode: 503,
               headers: {
               "Access-Control-Allow-Origin" : "*", // Required for CORS support to work

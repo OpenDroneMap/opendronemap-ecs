@@ -1,120 +1,51 @@
 {
     "family": "odm",
-    "taskRoleArn": "",
-    "networkMode": "",
+    "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "name": "",
+            "name": "opendronemap",
             "image": "opendronemap/opendronemap",
             "cpu": 8,
             "memory": 16384,
-            "memoryReservation": 0,
-            "links": [
-                ""
-            ],
-            "portMappings": [
-                {
-                    "containerPort": 0,
-                    "hostPort": 0,
-                    "protocol": ""
-                }
-            ],
-            "essential": true,
-            "entryPoint": [
-                ""
-            ],
-            "command": [
-                ""
-            ],
-            "environment": [
-                {
-                    "name": "",
-                    "value": ""
-                }
-            ],
+            "memoryReservation": 8192,
             "mountPoints": [
                 {
-                    "sourceVolume": "/mnt/efs-mount-point/odm_data/images",
+                    "sourceVolume": "images",
                     "containerPath": "/code/images",
                     "readOnly": false
                 },
                 {
-                    "sourceVolume": "/mnt/efs-mount-point/odm_data/odm_orthophoto",
+                    "sourceVolume": "odm_orthophoto",
                     "containerPath": "/code/odm_orthophoto",
                     "readOnly": false
                 },
                 {
-                    "sourceVolume": "/mnt/efs-mount-point/odm_data/odm_texturing",
+                    "sourceVolume": "odm_texturing",
                     "containerPath": "/code/odm_texturing",
                     "readOnly": false
                 }
             ],
-            "volumesFrom": [
-                {
-                    "sourceContainer": "",
-                    "readOnly": true
-                }
-            ],
-            "linuxParameters": {
-                "capabilities": {
-                    "add": [
-                        ""
-                    ],
-                    "drop": [
-                        ""
-                    ]
-                }
-            },
-            "hostname": "",
-            "user": "",
-            "workingDirectory": "",
-            "disableNetworking": true,
             "privileged": true,
-            "readonlyRootFilesystem": true,
-            "dnsServers": [
-                ""
-            ],
-            "dnsSearchDomains": [
-                ""
-            ],
-            "extraHosts": [
-                {
-                    "hostname": "",
-                    "ipAddress": ""
-                }
-            ],
-            "dockerSecurityOptions": [
-                ""
-            ],
-            "dockerLabels": {
-                "KeyName": ""
-            },
-            "ulimits": [
-                {
-                    "name": "",
-                    "softLimit": 0,
-                    "hardLimit": 0
-                }
-            ],
-            "logConfiguration": {
-                "logDriver": "",
-                "options": {
-                    "KeyName": ""
-                }
-            }
-        }
-    ],
-    "placementConstraints": [
-        {
-            "expression": "",
-            "type": "memberOf"
+            "readonlyRootFilesystem": true
         }
     ],
     "volumes": [
         {
-            "name": "",
+            "name": "images",
             "host": {
-                "sourcePath": ""
+                "sourcePath": "/mnt/efs-mount-point/odm_data/images"
+            }
+        },
+        {
+            "name": "odm_texturing",
+            "host": {
+                "sourcePath": "/mnt/efs-mount-point/odm_data/odm_texturing"
+            }
+        },
+        {
+            "name": "odm_orthophoto",
+            "host": {
+                "sourcePath": "/mnt/efs-mount-point/odm_data/odm_orthophoto"
             }
         }
     ]
