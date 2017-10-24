@@ -1,5 +1,8 @@
 # opendronemap-ecs
-Some glue to get opendronemap tasks running on AWS Elastic Container Service (ECS) backed by an Elastic File System (EFS) as working space, with files copied in from Simple Storage Service (S3).
+Serverless API to get opendronemap tasks running on AWS Elastic Container Service (ECS) backed by an Elastic File System (EFS) as working space, with files copied in from Simple Storage Service (S3).
+
+## Note
+STILL IN DEVELOPMENT
 
 ## Requirements
 1. Set up an EFS share in AWS, make sure it's available across all availability zones for your desired security group in your region of choice. Make a note of the EFS hostname.
