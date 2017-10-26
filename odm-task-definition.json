@@ -24,7 +24,7 @@
                     "readOnly": false
                 }
             ],
-            "privileged": true,
+            "privileged": false,
             "readonlyRootFilesystem": false
         }
     ],

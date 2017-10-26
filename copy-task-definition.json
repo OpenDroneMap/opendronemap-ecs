@@ -6,24 +6,19 @@
       "name": "s3-copy",
       "image": "matthewberryman/aws-cli",
       "cpu": 1,
+      "memory": 200,
       "mountPoints": [
         {
           "sourceVolume": "project",
           "containerPath": "/project",
           "readOnly": false
-        },
+        }
       ],
-      "privileged": true,
+      "privileged": false,
       "readonlyRootFilesystem": false,
       "command": [
         "aws s3 cp --recursive s3://my_s3/ /project"
-      ],
-      "environment": [
-        {
-          "name": "",
-          "value": ""
-        }
-      ],
+      ]
     }
   ],
   "volumes": [

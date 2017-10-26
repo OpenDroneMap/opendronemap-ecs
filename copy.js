@@ -3,7 +3,7 @@ console.log('Loading function');
 const AWS = require('aws-sdk');
 
 var params = {
-  taskDefinition: 'copy:1', /* required */
+  taskDefinition: 's3-copy:1', /* required */
   cluster: 'odm',
   count: 1,
   group: 'copy',
@@ -19,10 +19,17 @@ exports.handler = function(event, context, callback) {
     console.log("\n\nLoading handler\n\n");
     var requestBody = JSON.parse(event.body);
     const ecs = new AWS.ECS();
-    requestBody.
     params.overrides = {
-        command: "aws s3 cp --recursive " + requestBody.S3Uri + "/project/" + requestBody.S3Uri.slice(5).replace('/','_');
-    }
+        containerOverrides: [
+          {
+            name: 's3-copy',
+            command: ["aws s3 cp --recursive",
+            requestBody.S3Uri,
+             "/project/" + requestBody.S3Uri.slice(5).replace('/','_')
+           ]
+          }
+        ]
+    };
     ecs.runTask(params, function(err, data) {
         if (err) {
             console.log(err.stack);
