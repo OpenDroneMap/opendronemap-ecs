@@ -23,7 +23,7 @@ exports.handler = function(event, context, callback) {
         containerOverrides: [
           {
             name: 's3-copy',
-            command: ["aws s3 cp",
+            command: ["s3 cp",
             requestBody.S3Uri,
              "/project/" + requestBody.S3Uri.slice(5).replace('/','_'),
               "--recursive"
