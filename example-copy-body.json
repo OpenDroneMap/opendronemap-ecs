@@ -1,3 +1,3 @@
 {
-  "S3Uri": "au.uow.edu-mberryma-sample-image/images"
+  "S3Uri": "s3://au.uow.edu-mberryma-sample-image"
 }
