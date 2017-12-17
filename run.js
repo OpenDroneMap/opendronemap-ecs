@@ -21,7 +21,7 @@ exports.handler = function(event, context, callback) {
     var requestBody = JSON.parse(event.body);
     const ecs = new AWS.ECS();
     params.overrides =
-    requestBody.overrides;
+    requestBody;
     ecs.runTask(params, function(err, data) {
         if (err) {
             console.log(err.stack);
