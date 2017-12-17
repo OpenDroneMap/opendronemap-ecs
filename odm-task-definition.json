@@ -4,48 +4,11 @@
     "containerDefinitions": [
         {
             "name": "opendronemap",
-            "image": "opendronemap/opendronemap",
+            "image": "matthewberryman/opendronemap",
             "cpu": 16,
             "memory": 60000,
-            "mountPoints": [
-                {
-                    "sourceVolume": "images",
-                    "containerPath": "/code/images",
-                    "readOnly": false
-                },
-                {
-                    "sourceVolume": "odm_orthophoto",
-                    "containerPath": "/code/odm_orthophoto",
-                    "readOnly": false
-                },
-                {
-                    "sourceVolume": "odm_texturing",
-                    "containerPath": "/code/odm_texturing",
-                    "readOnly": false
-                }
-            ],
             "privileged": false,
             "readonlyRootFilesystem": false
-        }
-    ],
-    "volumes": [
-        {
-            "name": "images",
-            "host": {
-                "sourcePath": "/mnt/efs-mount-point/odm_data/images"
-            }
-        },
-        {
-            "name": "odm_texturing",
-            "host": {
-                "sourcePath": "/mnt/efs-mount-point/odm_data/odm_texturing"
-            }
-        },
-        {
-            "name": "odm_orthophoto",
-            "host": {
-                "sourcePath": "/mnt/efs-mount-point/odm_data/odm_orthophoto"
-            }
         }
     ]
 }

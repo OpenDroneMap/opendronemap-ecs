@@ -1,25 +1,8 @@
 {
   "containerOverrides":
   {
-    "volumes": [
-      {
-        "name": "images",
-        "host": {
-          "sourcePath": "/mnt/efs-mount-point/odm_data/images"
-        }
-      },
-      {
-        "name": "odm_texturing",
-        "host": {
-          "sourcePath": "/mnt/efs-mount-point/odm_data/odm_texturing"
-        }
-      },
-      {
-        "name": "odm_orthophoto",
-        "host": {
-          "sourcePath": "/mnt/efs-mount-point/odm_data/odm_orthophoto"
-        }
-      }
+    "command": [
+      "s3://acrossthecloud-example-s3/odm-input-data/odm_data_auckerman"
     ]
   }
 }
