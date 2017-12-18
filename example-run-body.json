@@ -1,8 +1,11 @@
 {
   "containerOverrides":
-  {
-    "command": [
-      "s3://acrossthecloud-example-s3/odm-input-data/odm_data_auckerman"
-    ]
-  }
+  [
+    {
+      "command": [
+        "s3://acrossthecloud-example-s3/odm-input-data/odm_data_auckerman"
+      ],
+      "name": "opendronemap"
+    }
+  ]
 }
