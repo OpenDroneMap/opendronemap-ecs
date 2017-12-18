@@ -6,7 +6,7 @@
             "name": "opendronemap",
             "image": "matthewberryman/opendronemap",
             "cpu": 16,
-            "memory": 60000,
+            "memory": 100000,
             "privileged": false,
             "readonlyRootFilesystem": false
         }

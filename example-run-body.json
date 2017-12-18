@@ -3,7 +3,7 @@
   [
     {
       "command": [
-        "s3://acrossthecloud-example-s3/odm-input-data/odm_data_auckerman"
+        "s3://acrossthecloud-example-s3/odm-input-data/odm_data_aukerman"
       ],
       "name": "opendronemap"
     }
