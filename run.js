@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 
 
 var params = {
-  taskDefinition: 'odm:2', /* required */
+  taskDefinition: 'odm:', /* required */
   cluster: 'odm',
   count: 1,
   group: 'odm',
