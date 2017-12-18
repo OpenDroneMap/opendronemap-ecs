@@ -5,11 +5,15 @@ Serverless API to get opendronemap tasks running on AWS Elastic Container, with 
 STILL IN DEVELOPMENT
 
 ## Requirements
-1. Configure an autoscaling launch configuration through the AWS EC2 console.
+1. Configure an autoscaling launch configuration through the AWS EC2 console:
+
   a. At the choose AMI step, select the ECS AMI for your AWS region from  , and under the AWS  marketplace tab, search for "ECS" to find the relevant AMI (a list of current AMI IDs for ECS AMIs can be found [here](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)).
+
   b. Choose an instance type—I recommend r4.4xlarge (and the memory setting in [odm-task-definition.json](odm-task-definition.json) is geared for that).
-  c. Under configure details, enter a name of your choice, review other settings, make sure the IAM role has access to your s3 bucket ([example policy you can attach](example-s3-policy.json)), and under advanced settings enter the user data from [user-data.yml](user-data-yml). Note that the
-  e. Select a security group (needs to be the same as the security group used at step 1).
+
+  c. Under configure details, enter a name of your choice, review other settings, make sure the IAM role has access to your s3 bucket ([example policy you can attach](example-s3-policy.json)), and under advanced settings enter the user data from [user-data.yml](user-data-yml).
+
+  d. Select a security group (needs to be the same as the security group used at step 1).
 
 2. Launch an autoscaling cluster using that new configuration. Under scaling policies I recommend one based on average CPU to start / terminate instances based on demand, as ODM is a CPU intensive task.
 
