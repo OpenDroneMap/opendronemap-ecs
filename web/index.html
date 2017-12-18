@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OpenDroneMap-ECS request form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>OpenDroneMap - Elastic Container Service</h1>
+        <p>Enter an s3 URI (start with s3://, omit trailing slash, and must contain /images):
+        <form id="myForm" action="https://apigw-string.execute-api.aws-region.amazonaws.com/prod/run" method="post">
+          s3 URI:<input type="text" id="request" request="" /><br />
+          <input type="submit" value="Submit request" />
+        </form>
+        </p>
+        <p>
+          Read about how this works <a href="https://github.com/OpenDroneMap/OpenDroneMap-ecs">on GitHub</a>.
+        </p>
+        <script type='text/javascript'>
+
+            /* attach a submit handler to the form */
+            $("#myForm").submit(function(event) {
+
+              /* stop form from submitting normally */
+              event.preventDefault();
+
+              /* get the action attribute from the <form action=""> element */
+
+              $.ajax({
+                   type: "POST",
+                   url: "https://apigw-string.execute-api.aws-region.amazonaws.com/prod/run" ,
+                   dataType: "json",
+                   contentType: "application/json",
+                   success: function (msg) {
+                       if (msg) {
+                           alert("Request submitted! Your outputs will be placed back in the s3 bucket when done.");
+                           location.reload(true);
+                       } else {
+                           alert("Cannot add to list !");
+                       }
+                   },
+
+                   data: JSON.stringify({
+                     "containerOverrides":
+                     [
+                       {
+                         "command": [
+                           $('#request').val()
+                         ],
+                         "name": "opendronemap"
+                       }
+                     ]
+                   }
+                );
+               });
+            });
+        </script>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
