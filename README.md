@@ -11,7 +11,7 @@ STILL IN DEVELOPMENT
 
   b. Choose an instance type—I recommend r4.4xlarge (and the memory setting in [odm-task-definition.json](odm-task-definition.json) is geared for that).
 
-  c. Under configure details, enter a name of your choice, review other settings, make sure the IAM role has access to your s3 bucket ([example policy you can attach](example-s3-policy.json)), and under advanced settings enter the user data from [user-data.yml](user-data-yml).
+  c. Under configure details, enter a name of your choice, review other settings, make sure the IAM role has access to your s3 bucket ([example policy you can attach](example-s3-policy.json)), and under advanced settings enter the user data from [user-data.yml](user-data.yml).
 
   d. Select a security group (needs to be the same as the security group used at step 1).
 
